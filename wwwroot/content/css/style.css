@@ -1,0 +1,8 @@
+﻿.btn {width: 75px;}
+a.navbar-brand img {width: 40px;}
+.imgThumbnail {height: 250px;width: auto;}
+.container div.container-fluid {border: 1px solid #ccc;border-radius: 6px;margin-top: 5px;}
+.card-body-details {border-left: 1px solid #ccc;border-right: 1px solid #ccc;}
+.card-header-details {border: 1px solid #ccc;}
+.card-footer-details {border: 1px solid #ccc;}
+.field-validation-error {font-size: 11px;font-weight: bold;}

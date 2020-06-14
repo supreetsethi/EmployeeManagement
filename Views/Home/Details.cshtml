@@ -1,0 +1,30 @@
+﻿@model Employee
+
+@{
+    ViewBag.Title = "Employee Detail";
+    var photoPath = "/images/" + (Model.PhotoPath ?? "noimage.jpg");
+}
+
+    <div class="row justify-content-center m-3">
+        <div class="col-sm-8">
+            <div class="card-header card-header-details">
+                <h1>
+                    @Model.Name
+                </h1>
+            </div>
+
+            <div class="card-body card-body-details text-center">
+                <img class="card-img-top imgThumbnail" src="@photoPath" alt="img" />
+                <h4>Employee Id : @Model.Id</h4>
+                <h4>Email : @Model.Email</h4>
+                <h4>Department : @Model.Department</h4>
+            </div>
+
+            <div class="card-footer card-footer-details text-center">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1">Back</a>
+                <a asp-controller="Home" asp-action="Details" asp-route-Id="@Model.Id" class="btn btn-primary m-1">Edit</a>
+                <a asp-controller="Home" asp-action="Details" asp-route-Id="@Model.Id" class="btn btn-danger m-1">Delete</a>
+
+            </div>
+        </div>
+    </div>
