@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Text;
 
 namespace EmployeeManagement.Model
 {
@@ -15,9 +16,16 @@ namespace EmployeeManagement.Model
 
         public DbSet<Employee> Employees { get; set; }
 
+        public DbSet<Product> Product { get; set; }
+
+        public DbSet<Brand> Brand { get; set; }
+
+        public DbSet<Category> Category { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            
 
             modelBuilder.Seed();
 
@@ -27,6 +35,11 @@ namespace EmployeeManagement.Model
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

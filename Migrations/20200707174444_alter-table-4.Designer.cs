@@ -4,14 +4,16 @@ using EmployeeManagement.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200707174444_alter-table-4")]
+    partial class altertable4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,6 +152,9 @@ namespace EmployeeManagement.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(100)");
 
@@ -157,6 +162,8 @@ namespace EmployeeManagement.Migrations
                         .HasColumnType("DateTime2");
 
                     b.HasKey("BrandId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Brand");
                 });
@@ -434,6 +441,14 @@ namespace EmployeeManagement.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EmployeeManagement.Model.Brand", b =>
+                {
+                    b.HasOne("EmployeeManagement.Model.Product", null)
+                        .WithMany("Brand")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

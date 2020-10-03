@@ -4,14 +4,16 @@ using EmployeeManagement.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200707174013_alter-table-3")]
+    partial class altertable3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,28 +41,6 @@ namespace EmployeeManagement.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("BrandCategory");
-                });
-
-            modelBuilder.Entity("BrandProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("BrandProduct");
                 });
 
             modelBuilder.Entity("EmployeeManagement.Model.ApplicationUser", b =>
@@ -417,21 +397,6 @@ namespace EmployeeManagement.Migrations
                     b.HasOne("EmployeeManagement.Model.Category", "Category")
                         .WithMany("BrandCategory")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BrandProduct", b =>
-                {
-                    b.HasOne("EmployeeManagement.Model.Brand", "Brands")
-                        .WithMany("BrandProduct")
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("EmployeeManagement.Model.Product", "Products")
-                        .WithMany("BrandProduct")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

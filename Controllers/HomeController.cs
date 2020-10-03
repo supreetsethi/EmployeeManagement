@@ -3,7 +3,6 @@ using Amazon.S3;
 using Amazon.S3.Transfer;
 using EmployeeManagement.Model;
 using EmployeeManagement.ViewModel;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Controllers
 {
-    
+
     public class HomeController : Controller
     {
         private IEmployeeRepository _employeeRepository;

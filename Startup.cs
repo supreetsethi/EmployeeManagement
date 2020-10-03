@@ -44,6 +44,8 @@ namespace EmployeeManagement
             }).AddXmlSerializerFormatters();
 
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +54,7 @@ namespace EmployeeManagement
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
+                //app.Use()
             }
             else
             {

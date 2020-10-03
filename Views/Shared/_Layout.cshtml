@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!DOCTYPE html>
 
 @inject SignInManager<ApplicationUser> signInManager
 
@@ -14,6 +15,7 @@
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
         <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.js"></script>
     </environment>
+    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
     <div class="container">
@@ -34,6 +36,16 @@
                         <li class="nav-item">
                             <a asp-controller="Home" asp-action="Create" class="nav-link">Create</a>
                         </li>
+                        <li>
+                            <a asp-controller="Category" asp-action="Index" class="nav-link">Category</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Brand" asp-action="Index" class="nav-link">Brand</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Product" asp-action="Index" class="nav-link">Product</a>
+                        </li>
+
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
